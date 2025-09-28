@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dronagiri-Saptagiri Hostels Official Website - Life & Events</title>
+    <title>Dronagiri-Saptagiri Hostels Official Website - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chosen Palette: "Golden Embers" - A warm, inviting palette using beige/cream as a base (bg-amber-50), with accents of a deep orange (text-amber-900) and a muted teal (bg-teal-600/text-teal-700) for a festive yet professional feel. -->
     <!-- Application Structure Plan: The website uses a standard, single-page navigational structure (Header, Hero, About, Facilities, Events, Footer). The core interaction is functional smooth scrolling navigation. The existing form logic is encapsulated within the dedicated #events section. This structure provides a complete user context (Hostel website) while allowing residents easy access to the form without leaving the main page. -->
@@ -162,7 +162,12 @@
                         </div>
                     </div>
                     
-                    <form id="participationForm" novalidate>
+                    <!-- CRITICAL CHANGE: FORM SUBMITS TO FORMSUBMIT.CO -->
+                    <form id="participationForm" method="POST" action="https://formsubmit.co/khushall23.iitd@gmail.com" novalidate>
+                        
+                        <!-- HIDDEN FIELD TO SET EMAIL SUBJECT (OPTIONAL) -->
+                        <input type="hidden" name="_subject" value="New Dronagiri-Saptagiri Event Registration!">
+
                         <div id="step-1" class="form-step hidden">
                             <h2 class="text-2xl font-semibold mb-6 border-b-2 border-amber-200 pb-2">🏷 Basic Details</h2>
                             <div class="space-y-6">
@@ -211,31 +216,31 @@
                                     <legend class="block text-sm font-medium text-gray-700 mb-2">Are you interested in giving a Talent Performance? <span class="text-xs">(Select all that apply)</span></legend>
                                     <div class="grid grid-cols-2 gap-4">
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Singing" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Singing" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Singing 🎶</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Dance" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Dance" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Dance 💃🕺</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Stand-up" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Stand-up" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Stand-up 😂</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Poetry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Poetry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Poetry ✍️</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Mimicry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Mimicry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Mimicry 🎭</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
-                                            <input type="checkbox" name="talent" value="Instrument" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Instrument" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Instrument 🎸</span>
                                         </label>
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors col-span-2">
-                                            <input type="checkbox" name="talent" value="Other" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <input type="checkbox" name="Talent[]" value="Other" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                                             <span class="ml-3 text-sm font-medium">Other</span>
                                         </label>
                                     </div>
@@ -263,14 +268,15 @@
 
                         <div id="navigation" class="mt-10 flex justify-between hidden">
                             <button type="button" data-action="back-form" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition-colors">Back</button>
+                            <!-- NOTE: The type of this button is set dynamically in JS to 'submit' on the final step -->
                             <button type="button" data-action="next-form" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">Next</button>
                         </div>
                     </form>
 
+                    <!-- THIS LOCAL CONFIRMATION IS NOW DEPRECATED, FORMSUBMIT WILL REDIRECT INSTEAD -->
                     <div id="confirmation" class="hidden text-center">
                         <h2 class="text-3xl font-bold text-teal-700 mb-4">Thank you for registering! 🥳</h2>
-                        <p class="text-gray-700">We've received your entry and will be in touch soon with more details about your participation.</p>
-                        <p class="text-gray-700 mt-2">Get ready for an amazing night!</p>
+                        <p class="text-gray-700">Your form has been submitted and sent to the event coordinators. You will receive an email confirmation shortly.</p>
                         <a href="#hero" class="mt-6 inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
                             Back to Hostle Site
                         </a>
@@ -347,7 +353,8 @@
             const backButton = navigation.querySelector('[data-action="back-form"]');
             const form = document.getElementById('participationForm');
             const formContainer = document.getElementById('formContainer');
-            const confirmation = document.getElementById('confirmation');
+            // The confirmation div is now deprecated as formsubmit redirects, but kept for structure
+            const confirmation = document.getElementById('confirmation'); 
             const progressBarFill = document.getElementById('progressBarFill');
             
             let currentStep = 0;
@@ -372,8 +379,12 @@
                 
                 if (stepIndex === totalFormSteps) {
                     nextButton.textContent = 'Submit';
+                    // CRITICAL CHANGE: Set type to submit on the final step
+                    nextButton.setAttribute('type', 'submit'); 
                 } else {
                     nextButton.textContent = 'Next';
+                    // CRITICAL CHANGE: Ensure type is button for validation steps
+                    nextButton.setAttribute('type', 'button'); 
                 }
 
                 // Progress calculation: Steps 1 to 4 map to 0% to 100%
@@ -412,16 +423,13 @@
                         return;
                     }
 
-                    if (currentStep < steps.length - 1) {
+                    if (currentStep < totalFormSteps) {
                         currentStep++;
                         showStep(currentStep);
-                    } else {
-                        // Submission logic (on final step)
-                        formContainer.classList.add('hidden');
-                        confirmation.classList.remove('hidden');
-                        document.getElementById('progressBar').classList.add('hidden');
-                        
-                    }
+                    } 
+                    // NOTE: If currentStep == totalFormSteps, the button is 'submit' and the form submits natively,
+                    // skipping the final local 'else' block from the original code.
+                    
                 } else if (action === 'back-form') {
                     if (currentStep > 0) { // Allow going back from step 1 to step 0 (Intro)
                         currentStep--;
@@ -448,7 +456,7 @@
             });
 
             // Conditional Logic for Talent Performance Details
-            const talentCheckboxes = document.querySelectorAll('input[name="talent"]');
+            const talentCheckboxes = document.querySelectorAll('input[name="Talent[]"]'); // Changed name to array format for multiple submissions
             const performanceDetailsContainer = document.getElementById('performanceDetailsContainer');
             const performanceDetailsTextarea = document.getElementById('performanceDetails');
 
