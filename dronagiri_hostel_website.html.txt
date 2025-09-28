@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dronagiri-Saptagiri Hostels Official Website - Life & Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: "Golden Embers" - A warm, inviting palette using beige/cream as a base (bg-amber-50), with accents of a deep orange (text-amber-900) and a muted teal (bg-teal-600/text-teal-700) for a festive yet professional feel. -->
+    <!-- Application Structure Plan: The website uses a standard, single-page navigational structure (Header, Hero, About, Facilities, Events, Footer). The core interaction is functional smooth scrolling navigation. The existing form logic is encapsulated within the dedicated #events section. This structure provides a complete user context (Hostel website) while allowing residents easy access to the form without leaving the main page. -->
+    <!-- Visualization & Content Choices: The main content is descriptive text and structured lists. The form itself remains the primary interactive element, using its original multi-step wizard structure and conditional logic to enhance user experience within the site. NO charts or complex visualizations are needed; the focus is on clear information hierarchy and integration of the form. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .form-step {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            min-height: 250px; /* Ensure space for transition */
+        }
+        .form-step.hidden {
+            opacity: 0;
+            transform: translateX(20px);
+            position: absolute;
+            pointer-events: none;
+            width: 100%;
+        }
+        .form-step.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .progress-bar-fill {
+            transition: width 0.5s ease-in-out;
+        }
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #047857; /* teal-600 */
+            margin: 10px auto 0;
+            border-radius: 9999px;
+        }
+        .nav-link:hover {
+            color: #047857; /* teal-600 */
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-amber-900">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-amber-900">Dronagiri-Saptagiri Hostels</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-lg font-medium text-amber-900 transition-colors">About</a>
+                <a href="#facilities" class="nav-link text-lg font-medium text-amber-900 transition-colors">Facilities</a>
+                <a href="#events" class="nav-link text-lg font-medium text-amber-900 transition-colors">Events & Form</a>
+                <a href="#contact" class="nav-link text-lg font-medium text-amber-900 transition-colors">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <span class="text-amber-900 text-2xl">☰</span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl py-2">
+            <a href="#about" class="block px-4 py-2 text-amber-900 hover:bg-amber-100 transition-colors">About</a>
+            <a href="#facilities" class="block px-4 py-2 text-amber-900 hover:bg-amber-100 transition-colors">Facilities</a>
+            <a href="#events" class="block px-4 py-2 text-amber-900 hover:bg-amber-100 transition-colors">Events & Form</a>
+            <a href="#contact" class="block px-4 py-2 text-amber-900 hover:bg-amber-100 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 md:py-32 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-amber-900 leading-tight">
+                Welcome Home, <span class="text-teal-600">Dronagiri & Saptagiri Residents</span>
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
+                Where comfort meets community. Your journey starts here, across two vibrant hostels.
+            </p>
+            <a href="#events" class="mt-8 inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                Join the Diwali Night 🎉
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 border-t border-amber-200">
+            <h2 class="text-4xl font-bold text-center text-amber-900 section-header">Life at Dronagiri & Saptagiri</h2>
+            <div class="mt-12 grid md:grid-cols-2 gap-10 items-center">
+                <div class="text-gray-700 space-y-4 text-lg">
+                    <p>Dronagiri and Saptagiri are sister hostels, forming one large, vibrant community that supports academic excellence and fosters lasting friendships. We believe in providing a safe, clean, and inspiring environment for all our residents.</p>
+                    <p>While each hostel offers dedicated spaces like study lounges and common areas, we often organize joint events and activities to build strong bonds among all students from various branches and years.</p>
+                </div>
+                <div class="bg-teal-100 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-3">Joint Community Vibe</h3>
+                    <ul class="list-disc list-inside text-gray-800 space-y-2">
+                        <li>Shared mentorship programs between seniors and freshers.</li>
+                        <li>Regular inter-hostel sports events and friendly tournaments.</li>
+                        <li>Inclusive celebrations for all major festivals.</li>
+                        <li>24/7 dedicated support staff across both residences.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section id="facilities" class="py-16 md:py-24 border-t border-amber-200 bg-amber-100">
+            <h2 class="text-4xl font-bold text-center text-amber-900 section-header">Hostel Facilities</h2>
+            <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <span class="text-4xl text-teal-600">🛌</span>
+                    <h3 class="text-xl font-semibold mt-3 mb-2 text-amber-900">Spacious Rooms</h3>
+                    <p class="text-gray-600 text-sm">Well-furnished, airy rooms with study desks and ample storage.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <span class="text-4xl text-teal-600">🍽️</span>
+                    <h3 class="text-xl font-semibold mt-3 mb-2 text-amber-900">Modern Mess</h3>
+                    <p class="text-gray-600 text-sm">Nutritious and hygienic food, three times a day, with diverse menus.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <span class="text-4xl text-teal-600">📚</span>
+                    <h3 class="text-xl font-semibold mt-3 mb-2 text-amber-900">Study Lounges</h3>
+                    <p class="text-gray-600 text-sm">Quiet, dedicated spaces with high-speed Wi-Fi for focused study.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <span class="text-4xl text-teal-600">🧼</span>
+                    <h3 class="text-xl font-semibold mt-3 mb-2 text-amber-900">Laundry & Utilities</h3>
+                    <p class="text-gray-600 text-sm">In-house laundry service and essential utilities available 24/7.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events & Participation Form Section -->
+        <section id="events" class="py-16 md:py-24 border-t border-amber-200">
+            <h2 class="text-4xl font-bold text-center text-amber-900 section-header">Upcoming Event: Joint Freshers & Pre-Diwali Night</h2>
+            <p class="text-center text-lg text-gray-700 mt-4 mb-10 max-w-3xl mx-auto">
+                Get ready for our biggest night of the year! This event is for all Dronagiri and Saptagiri residents. Use the interactive form below to register your participation for the **Mr. & Ms. Fresher Contest** or to showcase your amazing **Talent Performances**!
+            </p>
+
+            <!-- HOSTED FORM CONTAINER (Copied from dronagiri_hostel_form.html) -->
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto p-4 md:p-8 border border-teal-200">
+                <header class="text-center mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-amber-900">🎉 Event Participation Form</h1>
+                    <p class="text-lg md:text-xl text-teal-700 mt-2">Dronagiri & Saptagiri Residents - 5th October (7–10 PM)</p>
+                </header>
+
+                <div id="progressBar" class="w-full bg-amber-100 rounded-full h-2.5 mb-8">
+                    <div id="progressBarFill" class="bg-teal-600 h-2.5 rounded-full progress-bar-fill" style="width: 0%"></div>
+                </div>
+                
+                <div id="formContainer" class="relative">
+                    
+                    <div id="step-0" class="form-step active">
+                        <div class="text-center">
+                            <h2 class="text-2xl font-semibold mb-4">Welcome, Participants! ✨</h2>
+                            <p class="mb-4 text-gray-700">Please fill out this form to register for the two main events: the **Mr. & Ms. Fresher Contest** or **Talent Performances**.</p>
+                            <p class="mb-6 text-gray-700">Click below to begin the quick registration process! 🪔</p>
+                            <button data-action="next-form" class="w-full md:w-auto bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">Start Registration</button>
+                        </div>
+                    </div>
+                    
+                    <form id="participationForm" novalidate>
+                        <div id="step-1" class="form-step hidden">
+                            <h2 class="text-2xl font-semibold mb-6 border-b-2 border-amber-200 pb-2">🏷 Basic Details</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" required>
+                                </div>
+                                <div>
+                                    <label for="roomNumber" class="block text-sm font-medium text-gray-700 mb-1">Room Number</label>
+                                    <input type="text" id="roomNumber" name="roomNumber" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" required>
+                                </div>
+                                <div>
+                                    <label for="yearBranch" class="block text-sm font-medium text-gray-700 mb-1">Year & Branch</label>
+                                    <input type="text" id="yearBranch" name="yearBranch" placeholder="e.g., 1st Year, CSE" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="step-2" class="form-step hidden">
+                            <h2 class="text-2xl font-semibold mb-6 border-b-2 border-amber-200 pb-2">🏆 Mr. & Ms. Fresher</h2>
+                            <div class="space-y-6">
+                                <fieldset>
+                                    <legend class="block text-sm font-medium text-gray-700 mb-2">Do you want to participate in the contest?</legend>
+                                    <div class="flex items-center space-x-4">
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="radio" name="fresherContest" value="yes" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500" required>
+                                            <span class="ml-3 text-sm font-medium">Yes</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="radio" name="fresherContest" value="no" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500" checked>
+                                            <span class="ml-3 text-sm font-medium">No</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <div id="funFactContainer" class="hidden transition-opacity duration-500">
+                                    <label for="funFact" class="block text-sm font-medium text-gray-700 mb-1">Tell us one fun fact or talent you'd like to showcase</label>
+                                    <input type="text" id="funFact" name="funFact" placeholder="This will be your introduction!" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="step-3" class="form-step hidden">
+                            <h2 class="text-2xl font-semibold mb-6 border-b-2 border-amber-200 pb-2">🎤 Talent Performances</h2>
+                            <div class="space-y-6">
+                            <fieldset>
+                                    <legend class="block text-sm font-medium text-gray-700 mb-2">Are you interested in giving a Talent Performance? <span class="text-xs">(Select all that apply)</span></legend>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Singing" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Singing 🎶</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Dance" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Dance 💃🕺</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Stand-up" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Stand-up 😂</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Poetry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Poetry ✍️</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Mimicry" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Mimicry 🎭</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors">
+                                            <input type="checkbox" name="talent" value="Instrument" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Instrument 🎸</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-amber-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-500 transition-colors col-span-2">
+                                            <input type="checkbox" name="talent" value="Other" class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                                            <span class="ml-3 text-sm font-medium">Other</span>
+                                        </label>
+                                    </div>
+                            </fieldset>
+                                <div id="performanceDetailsContainer" class="hidden transition-opacity duration-500">
+                                    <label for="performanceDetails" class="block text-sm font-medium text-gray-700 mb-1">Please mention your performance details</label>
+                                    <textarea id="performanceDetails" name="performanceDetails" rows="3" placeholder="e.g., Song title, Dance style, time needed" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="step-4" class="form-step hidden">
+                            <h2 class="text-2xl font-semibold mb-6 border-b-2 border-amber-200 pb-2">✅ Final Details</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="specialRequirements" class="block text-sm font-medium text-gray-700 mb-1">Any special requirements for your performance?</label>
+                                    <input type="text" id="specialRequirements" name="specialRequirements" placeholder="e.g., Aux cable, background track" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500">
+                                </div>
+                                <div>
+                                    <label for="contactNumber" class="block text-sm font-medium text-gray-700 mb-1">Contact Number <span class="text-xs">(Optional)</span></label>
+                                    <input type="tel" id="contactNumber" name="contactNumber" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="navigation" class="mt-10 flex justify-between hidden">
+                            <button type="button" data-action="back-form" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition-colors">Back</button>
+                            <button type="button" data-action="next-form" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">Next</button>
+                        </div>
+                    </form>
+
+                    <div id="confirmation" class="hidden text-center">
+                        <h2 class="text-3xl font-bold text-teal-700 mb-4">Thank you for registering! 🥳</h2>
+                        <p class="text-gray-700">We've received your entry and will be in touch soon with more details about your participation.</p>
+                        <p class="text-gray-700 mt-2">Get ready for an amazing night!</p>
+                        <a href="#hero" class="mt-6 inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
+                            Back to Hostle Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END HOSTED FORM CONTAINER -->
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 border-t border-amber-200 bg-amber-100">
+             <h2 class="text-4xl font-bold text-center text-amber-900 section-header">Get In Touch</h2>
+             <div class="mt-12 grid md:grid-cols-3 gap-8 text-center text-gray-700">
+                <div>
+                    <span class="text-3xl text-teal-600">📍</span>
+                    <p class="font-semibold mt-2 text-amber-900">Address</p>
+                    <p>Dronagiri & Saptagiri Hostels Campus</p>
+                    <p>City, State - Pincode</p>
+                </div>
+                <div>
+                    <span class="text-3xl text-teal-600">📧</span>
+                    <p class="font-semibold mt-2 text-amber-900">Email</p>
+                    <p><a href="mailto:hostel@dronagiri.edu" class="text-teal-600 hover:underline">hostel.coordination@university.edu</a></p>
+                </div>
+                <div>
+                    <span class="text-3xl text-teal-600">📞</span>
+                    <p class="font-semibold mt-2 text-amber-900">Hostel Coordination Office</p>
+                    <p>+91 98765 43210</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Dronagiri & Saptagiri Hostels. All rights reserved. | Built for the Residents.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- WEBSITE NAVIGATION LOGIC ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    // Close mobile menu on click
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- FORM LOGIC (Integrated from previous file) ---
+            const steps = Array.from(document.querySelectorAll('#formContainer .form-step'));
+            const navigation = document.getElementById('navigation');
+            const nextButton = navigation.querySelector('[data-action="next-form"]');
+            const backButton = navigation.querySelector('[data-action="back-form"]');
+            const form = document.getElementById('participationForm');
+            const formContainer = document.getElementById('formContainer');
+            const confirmation = document.getElementById('confirmation');
+            const progressBarFill = document.getElementById('progressBarFill');
+            
+            let currentStep = 0;
+            // steps.length is 5 (Intro, Step 1, 2, 3, 4). totalFormSteps is 4 (Step 1 to 4).
+            const totalFormSteps = steps.length - 1; 
+
+            const showStep = (stepIndex) => {
+                steps.forEach((step, index) => {
+                    step.classList.toggle('active', index === stepIndex);
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                
+                // Show navigation only for steps 1 through 4
+                if (stepIndex >= 1 && stepIndex <= totalFormSteps) {
+                    navigation.classList.remove('hidden');
+                } else {
+                    navigation.classList.add('hidden');
+                }
+
+                // Hide back button on Step 1
+                backButton.classList.toggle('invisible', stepIndex <= 1);
+                
+                if (stepIndex === totalFormSteps) {
+                    nextButton.textContent = 'Submit';
+                } else {
+                    nextButton.textContent = 'Next';
+                }
+
+                // Progress calculation: Steps 1 to 4 map to 0% to 100%
+                const progress = stepIndex > 0 ? ((stepIndex -1) / (totalFormSteps - 1)) * 100 : 0;
+                progressBarFill.style.width = `${progress}%`;
+            };
+
+            const validateStep = (stepIndex) => {
+                const step = steps[stepIndex];
+                const inputs = step.querySelectorAll('input[required], select[required], textarea[required]');
+                let isValid = true;
+                inputs.forEach(input => {
+                    // Check if radio group is required and not checked
+                    if (input.type === 'radio' && input.getAttribute('required') && !form.querySelector(`input[name="${input.name}"]:checked`)) {
+                        isValid = false;
+                    } 
+                    // Check if text/input field is required and empty
+                    else if (input.getAttribute('required') && !input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('border-red-500');
+                        input.classList.remove('border-gray-300');
+                    } else {
+                        input.classList.remove('border-red-500');
+                        input.classList.add('border-gray-300');
+                    }
+                });
+                return isValid;
+            };
+
+            document.body.addEventListener('click', (e) => {
+                const action = e.target.dataset.action;
+                
+                if (action === 'next-form') {
+                     // Validate step only if we are past the initial intro step
+                     if (currentStep > 0 && !validateStep(currentStep)) {
+                        return;
+                    }
+
+                    if (currentStep < steps.length - 1) {
+                        currentStep++;
+                        showStep(currentStep);
+                    } else {
+                        // Submission logic (on final step)
+                        formContainer.classList.add('hidden');
+                        confirmation.classList.remove('hidden');
+                        document.getElementById('progressBar').classList.add('hidden');
+                        
+                    }
+                } else if (action === 'back-form') {
+                    if (currentStep > 0) { // Allow going back from step 1 to step 0 (Intro)
+                        currentStep--;
+                        showStep(currentStep);
+                    }
+                }
+            });
+            
+            // Conditional Logic for Mr. & Ms. Fresher
+            const fresherContestRadios = document.querySelectorAll('input[name="fresherContest"]');
+            const funFactContainer = document.getElementById('funFactContainer');
+            const funFactInput = document.getElementById('funFact');
+
+            fresherContestRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'yes' && radio.checked) {
+                        funFactContainer.classList.remove('hidden');
+                        funFactInput.setAttribute('required', 'required');
+                    } else {
+                        funFactContainer.classList.add('hidden');
+                        funFactInput.removeAttribute('required');
+                    }
+                });
+            });
+
+            // Conditional Logic for Talent Performance Details
+            const talentCheckboxes = document.querySelectorAll('input[name="talent"]');
+            const performanceDetailsContainer = document.getElementById('performanceDetailsContainer');
+            const performanceDetailsTextarea = document.getElementById('performanceDetails');
+
+            talentCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const anyChecked = Array.from(talentCheckboxes).some(cb => cb.checked);
+                    if (anyChecked) {
+                        performanceDetailsContainer.classList.remove('hidden');
+                        performanceDetailsTextarea.setAttribute('required', 'required');
+                    } else {
+                        performanceDetailsContainer.classList.add('hidden');
+                        performanceDetailsTextarea.removeAttribute('required');
+                    }
+                });
+            });
+            
+            showStep(currentStep);
+        });
+    </script>
+</body>
+</html>
